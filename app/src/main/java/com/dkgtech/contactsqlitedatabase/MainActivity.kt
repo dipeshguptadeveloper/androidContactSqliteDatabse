@@ -34,20 +34,21 @@ class MainActivity : AppCompatActivity() {
         contactAdapter = RecyclerContactAdapter(this@MainActivity, arrContacts)
         binding.rcViewContact.adapter = contactAdapter
 
-        dbHelper.deleteContact(3)
+        dbHelper.deleteContact(0)
 
 
-/*        binding.rcViewContact.findViewById<ImageView>(R.id.btnDeleteContact).setOnClickListener {
-            val deleteDialog = AlertDialog.Builder(this@MainActivity)
-            deleteDialog.setTitle("Delete Contact")
-            deleteDialog.setMessage("Are you sure want to delete?")
-            deleteDialog.setPositiveButton("Yes", object : DialogInterface.OnClickListener {
-                override fun onClick(dialog: DialogInterface?, which: Int) {
-                    dbHelper.deleteContact(6)
-                }
+        /*        binding.rcViewContact.findViewById<ImageView>(R.id.btnDeleteContact).setOnClickListener {
+                    val deleteDialog = AlertDialog.Builder(this@MainActivity)
+                    deleteDialog.setTitle("Delete Contact")
+                    deleteDialog.setMessage("Are you sure want to delete?")
+                    deleteDialog.setPositiveButton("Yes", object : DialogInterface.OnClickListener {
+                        override fun onClick(dialog: DialogInterface?, which: Int) {
+                            dbHelper.deleteContact(6)
+                        }
 
-            })
-        }*/
+                    })
+                }*/
+
 
 
         binding.btnFbAdd.setOnClickListener {
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity() {
 
 
                 btnAdd.setOnClickListener {
+
                     val contactName = edtContactName.text.toString()
                     val contactNumber = edtContactNumber.text.toString()
 
@@ -73,6 +75,8 @@ class MainActivity : AppCompatActivity() {
                                 contactNumber
                             )
                         )
+
+                        dbHelper.addContact(contactName, contactNumber)
                         contactAdapter.notifyItemInserted(arrContacts.size - 1)
                         binding.rcViewContact.scrollToPosition(arrContacts.size - 1)
 
