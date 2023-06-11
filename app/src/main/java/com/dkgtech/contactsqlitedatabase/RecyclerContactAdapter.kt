@@ -30,5 +30,6 @@ class RecyclerContactAdapter(val context: Context, val arrContact: ArrayList<Con
         holder.txtContactId.text = arrContact[position].contactId.toString()
         holder.txtContactName.text = arrContact[position].contactName
         holder.txtContactNumber.text = arrContact[position].contactNumber
+
     }
 }
